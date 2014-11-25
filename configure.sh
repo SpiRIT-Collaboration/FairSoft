@@ -18,6 +18,7 @@ unset ROOTSYS
 
 
 #Clean the enviroment
+unset CLHEPPATH
 unset ROOTBUILD
 unset THREAD
 unset ZLIB
@@ -164,6 +165,9 @@ source scripts/package_versions.sh
 # Create the installation directory and its substructure
 create_installation_directories
 
+# set the versions of SpiRIT packages to be build
+source scripts/spirit_packages.sh
+
 # Now start compilations with checks
 
 ######################## CMake ################################
@@ -240,6 +244,13 @@ fi
 if [ "$check" = "1" -a "$compiler" = "Clang" -a "$platform" = "linux" ];
 then
   source scripts/install_mesa.sh 
+fi
+
+##################### CLHEP #############################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_clhep.sh
 fi
 
 ##################### GEANT 4 #############################################
@@ -327,6 +338,13 @@ fi
 if [ "$check" = "1" ];
 then
   source scripts/install_nanomsg.sh
+fi
+
+##################### RAVE ####################################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_rave.sh
 fi
 
 if [ "$check" = "1" ];
