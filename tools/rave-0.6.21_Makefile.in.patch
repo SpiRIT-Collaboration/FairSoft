@@ -1,0 +1,11 @@
+--- tests/Makefile.in_orig	2014-10-29 18:26:01.145303387 +0900
++++ tests/Makefile.in	2014-11-25 17:29:34.225273840 +0900
+@@ -359,7 +359,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-AM_CPPFLAGS = $(PLATFORMCPPFLAGS) -I$(top_srcdir)/src/ -I$(top_srcdir)/src/RaveBase/RaveInterface $(BOOST_CPPFLAGS) -I$(LHEPINCPATH) -I$(CLHEPINCPATH) -I$(top_srcdir)/src/ROOT/smatrix/ -I$(top_srcdir)/src/ROOT/mathcore/ -I$(top_srcdir)/src/ROOT/ -I$(top_srcdir)/src/ROOT/genvector/ -DRAVE
++AM_CPPFLAGS = $(PLATFORMCPPFLAGS) -I$(top_srcdir)/src/ -I$(top_srcdir)/src/RaveBase/RaveInterface $(BOOST_CPPFLAGS) -I$(CLHEPINCPATH) -I$(top_srcdir)/src/ROOT/smatrix/ -I$(top_srcdir)/src/ROOT/mathcore/ -I$(top_srcdir)/src/ROOT/ -I$(top_srcdir)/src/ROOT/genvector/ -DRAVE
+ PLATFORMLDADD = $(top_builddir)/src/RaveBase/libRaveBase.la \
+ 	$(top_builddir)/src/libRaveCore.la \
+ 	$(top_builddir)/src/RecoVertex/libRaveVertex.la $(CLHEPLIB) \
