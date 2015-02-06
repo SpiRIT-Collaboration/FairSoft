@@ -357,6 +357,13 @@ then
   source scripts/install_rave.sh
 fi
 
+##################### RAVE ####################################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_genfit.sh
+fi
+
 if [ "$check" = "1" ];
 then
     echo "*** End installation of external packages without Errors***"  | tee -a $logfile
