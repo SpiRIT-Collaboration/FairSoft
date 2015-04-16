@@ -1,33 +1,7 @@
-From 01af7b8bdd6a39a19ab4a08eeed35ce3e7b3c1de Mon Sep 17 00:00:00 2001
-From: Genie Jhang <geniejhang@majimak.com>
-Date: Thu, 16 Apr 2015 12:24:39 +0900
-Subject: [PATCH] - shared_ptr in boost is changed into shared_ptr in C++11
-
----
- .../TaggedTransientTrackKinematicParticle.h        |  9 +++++----
- .../RaveEngine/src/RaveParameterSetBuilder.cc      | 17 +++++++++--------
- .../src/TaggedTransientTrackKinematicParticle.cc   |  2 +-
- .../RaveInterface/rave/BasicKinematicParticle.h    | 11 ++++++-----
- .../RaveInterface/rave/KinematicParticle.h         |  4 ++--
- .../RaveInterface/src/BasicKinematicConstraint.cc  |  7 ++++---
- .../RaveInterface/src/BasicKinematicParticle.cc    |  4 ++--
- .../src/BasicMultipleKinematicConstraint.cc        | 16 ++++++++--------
- .../src/BasicTransientTrackKinematicParticle.cc    |  4 ++--
- .../src/KinematicConstraintBuilder.cc              | 22 +++++++++++-----------
- .../RaveInterface/src/KinematicParticle.cc         |  4 ++--
- .../RaveInterface/src/KinematicTreeFactory.cc      |  4 ++--
- .../src/VertexGaussianStateConversions.cc          |  5 +++--
- .../interface/AnalyticalPropagatorESProducer.h     |  7 ++++---
- .../GsfTools/interface/CloseComponentsMerger.h     |  5 +++--
- .../GsfTools/interface/GaussianStateLessWeight.h   |  5 +++--
- .../GsfTools/interface/MultiGaussianState.h        |  7 ++++---
- .../interface/LocalTrajectoryError.h               |  7 ++++---
- 18 files changed, 75 insertions(+), 65 deletions(-)
-
-diff --git a/src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h b/src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h
+diff --git src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h
 index 320ab0f..1ee391f 100644
---- a/src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h
-+++ b/src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h
+--- src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h
++++ src/RaveBase/RaveEngine/interface/TaggedTransientTrackKinematicParticle.h
 @@ -16,7 +16,8 @@
  
  #include "RecoVertex/KinematicFitPrimitives/interface/TransientTrackKinematicParticle.h"
@@ -58,10 +32,10 @@ index 320ab0f..1ee391f 100644
      rave::TransientTrackKinematicParticle theTag;
  
  };
-diff --git a/src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc b/src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc
+diff --git src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc
 index 0558236..61af607 100644
---- a/src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc
-+++ b/src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc
+--- src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc
++++ src/RaveBase/RaveEngine/src/RaveParameterSetBuilder.cc
 @@ -2,7 +2,8 @@
  #include "FWCore/MessageLogger/interface/MessageLogger.h"
  #include <boost/spirit/home/classic/core.hpp>
@@ -108,10 +82,10 @@ index 0558236..61af607 100644
    last_key = "finder";
    parse_info<> pI = parse(s.c_str(), expression);
  
-diff --git a/src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc b/src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc
+diff --git src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc
 index a75a566..5adbad0 100644
---- a/src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc
-+++ b/src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc
+--- src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc
++++ src/RaveBase/RaveEngine/src/TaggedTransientTrackKinematicParticle.cc
 @@ -5,7 +5,7 @@ TaggedTransientTrackKinematicParticle::TaggedTransientTrackKinematicParticle (
    KinematicConstraint * lastConstraint,
    ReferenceCountingPointer< KinematicParticle > previousParticle,
@@ -121,10 +95,10 @@ index a75a566..5adbad0 100644
      TransientTrackKinematicParticle ( kineState, chiSquared, degreesOfFr,
                                        lastConstraint, previousParticle, pr,
                                        initialTrack.get() ),
-diff --git a/src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h b/src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h
+diff --git src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h
 index ec95de1..4e59d45 100644
---- a/src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h
-+++ b/src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h
+--- src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h
++++ src/RaveBase/RaveInterface/rave/BasicKinematicParticle.h
 @@ -35,7 +35,8 @@
  
  #include "boost/any.hpp"
@@ -165,10 +139,10 @@ index ec95de1..4e59d45 100644
  
      int theId;
      boost::any theLink;
-diff --git a/src/RaveBase/RaveInterface/rave/KinematicParticle.h b/src/RaveBase/RaveInterface/rave/KinematicParticle.h
+diff --git src/RaveBase/RaveInterface/rave/KinematicParticle.h src/RaveBase/RaveInterface/rave/KinematicParticle.h
 index 157eb6a..1c0e2d3 100644
---- a/src/RaveBase/RaveInterface/rave/KinematicParticle.h
-+++ b/src/RaveBase/RaveInterface/rave/KinematicParticle.h
+--- src/RaveBase/RaveInterface/rave/KinematicParticle.h
++++ src/RaveBase/RaveInterface/rave/KinematicParticle.h
 @@ -100,7 +100,7 @@ class RaveDllExport KinematicParticle :
      /**
       * @return The magnetic field assigned upon creation of this particle
@@ -187,10 +161,10 @@ index 157eb6a..1c0e2d3 100644
  
      int id() const;
      boost::any link() const;
-diff --git a/src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc b/src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc
+diff --git src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc
 index e3356c6..e18d0a5 100644
---- a/src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc
-+++ b/src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc
+--- src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc
++++ src/RaveBase/RaveInterface/src/BasicKinematicConstraint.cc
 @@ -3,14 +3,15 @@
  #include "RecoVertex/KinematicFitPrimitives/interface/KinematicConstraint.h"
  
@@ -218,10 +192,10 @@ index e3356c6..e18d0a5 100644
  }
  
  BasicKinematicConstraint::~BasicKinematicConstraint()
-diff --git a/src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc b/src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc
+diff --git src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc
 index f228289..5cda037 100644
---- a/src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc
-+++ b/src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc
+--- src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc
++++ src/RaveBase/RaveInterface/src/BasicKinematicParticle.cc
 @@ -152,7 +152,7 @@ float BasicKinematicParticle::ndof() const
    return theNdof;
  }
@@ -240,10 +214,10 @@ index f228289..5cda037 100644
  {
    return theConstraint;
  }
-diff --git a/src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc b/src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc
+diff --git src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc
 index 9cb57ea..fefd1ac 100644
---- a/src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc
-+++ b/src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc
+--- src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc
++++ src/RaveBase/RaveInterface/src/BasicMultipleKinematicConstraint.cc
 @@ -5,10 +5,10 @@
  #include "boost/cast.hpp"
  
@@ -292,10 +266,10 @@ index 9cb57ea..fefd1ac 100644
  }
  
  BasicMultipleKinematicConstraint::~BasicMultipleKinematicConstraint()
-diff --git a/src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc b/src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc
+diff --git src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc
 index 7e46624..d970329 100644
---- a/src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc
-+++ b/src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc
+--- src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc
++++ src/RaveBase/RaveInterface/src/BasicTransientTrackKinematicParticle.cc
 @@ -37,7 +37,7 @@ BasicTransientTrackKinematicParticle::BasicTransientTrackKinematicParticle (
  
  namespace
@@ -314,10 +288,10 @@ index 7e46624..d970329 100644
      new reco::TransientTrack ( RaveToCmsObjects().tTrack ( initialTrack ) ) );
  
    ::KinematicState initState = builder (
-diff --git a/src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc b/src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc
+diff --git src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc
 index a3b19da..66423ab 100644
---- a/src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc
-+++ b/src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc
+--- src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc
++++ src/RaveBase/RaveInterface/src/KinematicConstraintBuilder.cc
 @@ -27,7 +27,7 @@ KinematicConstraintBuilder::~KinematicConstraintBuilder()
  
  rave::KinematicConstraint KinematicConstraintBuilder::createMassKinematicConstraint ( const float & mass, const float sigma ) const
@@ -417,10 +391,10 @@ index a3b19da..66423ab 100644
      new ::TwoTrackMassKinematicConstraint ( lmass ) );
    return rave::KinematicConstraint ( BasicKinematicConstraint ( internalConstraint ) );
  }
-diff --git a/src/RaveBase/RaveInterface/src/KinematicParticle.cc b/src/RaveBase/RaveInterface/src/KinematicParticle.cc
+diff --git src/RaveBase/RaveInterface/src/KinematicParticle.cc src/RaveBase/RaveInterface/src/KinematicParticle.cc
 index f9bbdae..79de9d8 100644
---- a/src/RaveBase/RaveInterface/src/KinematicParticle.cc
-+++ b/src/RaveBase/RaveInterface/src/KinematicParticle.cc
+--- src/RaveBase/RaveInterface/src/KinematicParticle.cc
++++ src/RaveBase/RaveInterface/src/KinematicParticle.cc
 @@ -66,12 +66,12 @@ float KinematicParticle::ndof() const
    return data().ndof();
  }
@@ -436,10 +410,10 @@ index f9bbdae..79de9d8 100644
  {
    return data().lastConstraint();
  }
-diff --git a/src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc b/src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc
+diff --git src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc
 index 82789cc..7c5a9d8 100644
---- a/src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc
-+++ b/src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc
+--- src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc
++++ src/RaveBase/RaveInterface/src/KinematicTreeFactory.cc
 @@ -183,7 +183,7 @@ rave::KinematicTree KinematicTreeFactory::useVertexFitter (
  
      // Unwrap the constraint
@@ -458,10 +432,23 @@ index 82789cc..7c5a9d8 100644
          cs.data().getInternal() ).get();
  
      edm::LogInfo ( "KinematicTreeFactory" ) << "Using KinematicParticleFitter with "
-diff --git a/src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc b/src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc
+diff --git src/RecoVertex/GaussianSumVertexFit/src/GsfVertexWeightCalculator.cc src/RecoVertex/GaussianSumVertexFit/src/GsfVertexWeightCalculator.cc
+index f5e5793..80e7fc8 100644
+--- src/RecoVertex/GaussianSumVertexFit/src/GsfVertexWeightCalculator.cc
++++ src/RecoVertex/GaussianSumVertexFit/src/GsfVertexWeightCalculator.cc
+@@ -56,7 +56,7 @@ double GsfVertexWeightCalculator::calculate(const  VertexState & oldVertex,
+   double weight = pow(2. * M_PI, -0.5 * 5) * sqrt(1./sigmaDet) * exp(-0.5 * chi);
+   // edm::LogError("GsfVertexWeightCalculator") << "w=" << weight << " chi=" << chi << " sigmaDet=" << sigmaDet;
+ 
+-  if (isnan(weight) || sigmaDet<=0.) {
++  if (std::isnan(weight) || sigmaDet<=0.) {
+     edm::LogWarning("GsfVertexWeightCalculator") << "Weight is NaN";
+     return 0.;
+     // return -1.;
+diff --git src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc
 index 14c4729..b7798cc 100644
---- a/src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc
-+++ b/src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc
+--- src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc
++++ src/RecoVertex/GaussianSumVertexFit/src/VertexGaussianStateConversions.cc
 @@ -3,13 +3,14 @@
  #include "RecoVertex/GaussianSumVertexFit/interface/BasicMultiVertexState.h"
  #include "TrackingTools/GsfTools/interface/SingleGaussianState.h"
@@ -479,10 +466,10 @@ index 14c4729..b7798cc 100644
      const std::vector<VertexState> components = aState.components();
      MultiGaussianState<3>::SingleStateContainer singleStates;
      singleStates.reserve(components.size());
-diff --git a/src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h b/src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h
+diff --git src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h
 index a5fb031..4d172b8 100644
---- a/src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h
-+++ b/src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h
+--- src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h
++++ src/TrackingTools/GeomPropagators/interface/AnalyticalPropagatorESProducer.h
 @@ -5,15 +5,16 @@
  #include "FWCore/ParameterSet/interface/ParameterSet.h"
  #include "TrackingTools/Records/interface/TrackingComponentsRecord.h"
@@ -503,10 +490,10 @@ index a5fb031..4d172b8 100644
    edm::ParameterSet pset_;
  };
  
-diff --git a/src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h b/src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h
+diff --git src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h
 index 814cb8d..4438a26 100644
---- a/src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h
-+++ b/src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h
+--- src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h
++++ src/TrackingTools/GsfTools/interface/CloseComponentsMerger.h
 @@ -5,7 +5,8 @@
  #include "TrackingTools/GsfTools/interface/DistanceBetweenComponents.h"
  #include "DataFormats/GeometryCommonDetAlgo/interface/DeepCopyPointerByClone.h"
@@ -526,10 +513,10 @@ index 814cb8d..4438a26 100644
  
   public:
  
-diff --git a/src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h b/src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h
+diff --git src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h
 index 7839c47..690f312 100644
---- a/src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h
-+++ b/src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h
+--- src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h
++++ src/TrackingTools/GsfTools/interface/GaussianStateLessWeight.h
 @@ -2,7 +2,8 @@
  #define GaussianStateLessWeight_h_
  
@@ -549,10 +536,10 @@ index 7839c47..690f312 100644
  
  public:
    GaussianStateLessWeight() {}
-diff --git a/src/TrackingTools/GsfTools/interface/MultiGaussianState.h b/src/TrackingTools/GsfTools/interface/MultiGaussianState.h
+diff --git src/TrackingTools/GsfTools/interface/MultiGaussianState.h src/TrackingTools/GsfTools/interface/MultiGaussianState.h
 index 241db4d..93ecdb1 100644
---- a/src/TrackingTools/GsfTools/interface/MultiGaussianState.h
-+++ b/src/TrackingTools/GsfTools/interface/MultiGaussianState.h
+--- src/TrackingTools/GsfTools/interface/MultiGaussianState.h
++++ src/TrackingTools/GsfTools/interface/MultiGaussianState.h
 @@ -2,7 +2,8 @@
  #define MultiGaussianState_H
  
@@ -574,10 +561,10 @@ index 241db4d..93ecdb1 100644
    typedef std::vector< SingleStatePtr > SingleStateContainer;
  
  public:
-diff --git a/src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h b/src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h
+diff --git src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h
 index fcb5f1e..a83ff24 100644
---- a/src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h
-+++ b/src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h
+--- src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h
++++ src/TrackingTools/TrajectoryParametrization/interface/LocalTrajectoryError.h
 @@ -4,7 +4,8 @@
  #include "DataFormats/GeometrySurface/interface/LocalError.h"
  #include "DataFormats/CLHEP/interface/AlgebraicObjects.h"
@@ -606,6 +593,3 @@ index fcb5f1e..a83ff24 100644
  };
  
  #endif
--- 
-2.2.1
-
