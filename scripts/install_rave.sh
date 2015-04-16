@@ -34,7 +34,7 @@ then
 
   cd $SIMPATH/tools/rave/
   mypatch ../rave-0.6.21_Makefile.in.patch
-  mypatch ../rave-0.6.21-shared_ptr-c++11.patch
+  mypatch ../rave-0.6.21-isnan-c++11.patch
 
   rm -rf ./src/boost
 
