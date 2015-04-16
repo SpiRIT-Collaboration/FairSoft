@@ -1,3 +1,16 @@
+diff --git src/ROOT/smatrix/Math/MConfig.h src/ROOT/smatrix/Math/MConfig.h
+index d0b3786..76ad3c4 100644
+--- src/ROOT/smatrix/Math/MConfig.h
++++ src/ROOT/smatrix/Math/MConfig.h
+@@ -2,7 +2,7 @@
+ // Authors: T. Glebe, L. Moneta    2005  
+ 
+ #ifndef ROOT_Math_MConfig_
+-#define ROOT_Math_MConfig
++#define ROOT_Math_MConfig_
+ 
+ // for alpha streams 
+ #if defined(__alpha) && !defined(linux)
 diff --git src/RecoVertex/GaussianSumVertexFit/src/GsfVertexWeightCalculator.cc src/RecoVertex/GaussianSumVertexFit/src/GsfVertexWeightCalculator.cc
 index f5e5793..80e7fc8 100644
 --- src/RecoVertex/GaussianSumVertexFit/src/GsfVertexWeightCalculator.cc
