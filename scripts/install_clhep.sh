@@ -37,7 +37,6 @@ then
   cd $SIMPATH/tools/clhep-build
 
   cmake -DCMAKE_INSTALL_PREFIX=$install_prefix \
-        -DCMAKE_INSTALL_LIBDIR=$install_prefix/lib \
         $SIMPATH/tools/clhep
 
   $MAKE_command -j$number_of_processes install
