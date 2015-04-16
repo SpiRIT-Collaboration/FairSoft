@@ -35,10 +35,13 @@ then
   cd $SIMPATH/tools/rave/
   mypatch ../rave-0.6.21_Makefile.in.patch
   mypatch ../rave-0.6.21-shared_ptr-c++11.patch
-  
+
+  rm -rf ./src/boost
+
   ./configure --prefix=$install_prefix \
               --with-clhep=$install_prefix \
-              --with-boost=$install_prefix
+              --with-boost=$install_prefix \
+              --with-boost-libdir=$install_prefix/lib
 
   $MAKE_command -j$number_of_processes
   $MAKE_command -j$number_of_processes install
