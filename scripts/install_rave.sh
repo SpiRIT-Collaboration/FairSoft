@@ -36,6 +36,11 @@ then
   mypatch ../rave-0.6.21_Makefile.in.patch
   mypatch ../rave-0.6.21-isnan-c++11.patch
 
+  if [ "$platform" = "macosx" ];
+  then
+    mypatch ../rave-0.6.21-Yosemite-Clang++.patch
+  fi
+
   rm -rf ./src/boost
 
   ./configure --prefix=$install_prefix \
