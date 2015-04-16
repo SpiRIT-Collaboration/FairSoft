@@ -33,10 +33,12 @@ if (not_there rave-lib $checkfile);
 then
 
   cd $SIMPATH/tools/rave/
-  patch -p0 < ../rave-0.6.21_Makefile.in.patch
+  mypatch ../rave-0.6.21_Makefile.in.patch
+  mypatch ../rave-0.6.21-shared_ptr-c++11.patch
   
   ./configure --prefix=$install_prefix \
-              --with-clhep=$install_prefix
+              --with-clhep=$install_prefix \
+              --with-boost=$install_prefix
 
   $MAKE_command -j$number_of_processes
   $MAKE_command -j$number_of_processes install

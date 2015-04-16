@@ -62,7 +62,8 @@ then
 
   if [ "$build_cpp11" = "yes" ];
   then
-    geant4_cpp="-DGEANT4_BUILD_CXXSTD=c++11"
+#    geant4_cpp="-DGEANT4_BUILD_CXXSTD=c++11"
+    geant4_cpp=""
   else
     geant4_cpp=""
   fi
@@ -71,7 +72,7 @@ then
   then
     geant4_opengl="-DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_GDML=ON -DXERCESC_ROOT_DIR=$install_prefix"
   else
-    geant4_opengl=""
+    geant4_opengl="-DGEANT4_USE_OPENGL_X11=ON"
   fi
 
   cmake -DCMAKE_INSTALL_PREFIX=$install_prefix \
