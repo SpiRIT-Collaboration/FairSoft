@@ -1,0 +1,51 @@
+diff --git src/DataFormats/GeometrySurface/src/BlockWipedAllocator.cc src/DataFormats/GeometrySurface/src/BlockWipedAllocator.cc
+index c1283cd..ee1f7ed 100644
+--- src/DataFormats/GeometrySurface/src/BlockWipedAllocator.cc
++++ src/DataFormats/GeometrySurface/src/BlockWipedAllocator.cc
+@@ -58,7 +58,7 @@ BlockWipedAllocator & BlockWipedAllocator::me() const {
+ BlockWipedAllocator::Stat BlockWipedAllocator::stat() const {
+   Stat s = { m_typeSize, m_blockSize, (*m_current).m_allocated,
+ 	     (&*(*m_current).m_data.end()-m_next)/m_typeSize,
+-	     std::distance(const_iterator(m_current),m_blocks.end()),
++	     static_cast<size_t>(std::distance(const_iterator(m_current),m_blocks.end())),
+ 	     m_blocks.size(), m_alive};
+   return s;
+ }
+diff --git src/ROOT/smatrix/Math/StaticCheck.h src/ROOT/smatrix/Math/StaticCheck.h
+index 3f351c9..880b16f 100644
+--- src/ROOT/smatrix/Math/StaticCheck.h
++++ src/ROOT/smatrix/Math/StaticCheck.h
+@@ -40,6 +40,26 @@ namespace ROOT
+ {
+ 
+   namespace Math { 
++
++#ifndef USE_OLD_SC
++
++
++     template<bool> struct CompileTimeChecker
++     {
++        CompileTimeChecker(void *) {}
++     };
++     template<> struct CompileTimeChecker<false> {};
++
++  }   // end namespace Math
++}  // end namespace ROOT
++
++#define STATIC_CHECK(expr, msg) \
++   { class ERROR_##msg {}; \
++   ERROR_##msg e; \
++   (void) (ROOT::Math::CompileTimeChecker<(expr) != 0> (&e)); }
++
++
++#else
+ ////////////////////////////////////////////////////////////////////////////////
+ // Helper structure for the STATIC_CHECK macro
+ ////////////////////////////////////////////////////////////////////////////////
+@@ -72,4 +92,6 @@ namespace ROOT
+ 
+ #endif 
+ 
++#endif
++
+ #endif // STATIC_CHECK_INC_
