@@ -34,6 +34,8 @@ then
 
   cd $SIMPATH/tools/genfit/
 
+  mypatch ../genfit2.0.0-CMakeLists.patch
+
   mkdir build
   cd build
   RAVEPATH=$RAVEPATH cmake ../ -DCMAKE_INSTALL_PREFIX=$SIMPATH_INSTALL -DBoost_DIR=$SIMPATH_INSTALL/lib/boost -DBoost_INCLUDE_DIR=$SIMPATH_INSTALL/include
