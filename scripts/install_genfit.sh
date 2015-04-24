@@ -11,7 +11,7 @@ then
   if [ ! -e $GENFIT_VERSION.tar.gz ];
   then
     echo "*** Checking out genfit sources ***"
-    svn co $GENFIT_LOCATION genfit
+    svn co --no-auth-cache --non-interactive --trust-server-cert $GENFIT_LOCATION genfit
   fi
   untar genfit $GENFIT_VERSION.tar.gz 
   if [ -d $GENFIT_VERSION ]; 
