@@ -351,7 +351,7 @@ fi
 
 if [ "$check" = "1" ];
 then
-  source scripts/install_genfit.sh
+  source scripts/install_genfit2.sh
 fi
 
 if [ "$check" = "1" ];
