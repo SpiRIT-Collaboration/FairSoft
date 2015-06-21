@@ -5,18 +5,18 @@
 # unpack it
 
 
-if [ ! -d  $SIMPATH/tools/genfit ];
+if [ ! -d  $SIMPATH/tools/genfit2 ];
 then 
   cd $SIMPATH/tools
-  if [ ! -e $GENFIT_VERSION.tar.gz ];
+  if [ ! -e $GENFIT2_VERSION.tar.gz ];
   then
-    echo "*** Checking out genfit sources ***"
-    svn co --no-auth-cache --non-interactive --trust-server-cert $GENFIT_LOCATION genfit
+    echo "*** Checking out genfit2 sources ***"
+    svn co -r $GENFIT2_REVISION --no-auth-cache --non-interactive --trust-server-cert $GENFIT2_LOCATION genfit2
   fi
-  untar genfit $GENFIT_VERSION.tar.gz 
-  if [ -d $GENFIT_VERSION ]; 
+  untar genfit2 $GENFIT2_VERSION.tar.gz 
+  if [ -d $GENFIT2_VERSION ]; 
   then
-    ln -s $GENFIT_VERSION genfit
+    ln -s $GENFIT2_VERSION genfit2
   fi
 fi 
 
@@ -29,10 +29,10 @@ install_prefix=$SIMPATH_INSTALL
 
 checkfile=$install_prefix/lib/libgenfit2.so
 
-if (not_there genfit-lib $checkfile);
+if (not_there genfit2-lib $checkfile);
 then
 
-  cd $SIMPATH/tools/genfit/
+  cd $SIMPATH/tools/genfit2/
 
   mypatch ../genfit2.0.0-CMakeLists.patch
 
@@ -49,7 +49,7 @@ then
     create_links dylib so
   fi
 
-  check_success genfit $checkfile
+  check_success genfit2 $checkfile
   check=$?
 fi
   
