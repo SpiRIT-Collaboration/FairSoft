@@ -38,7 +38,7 @@ then
 
   mkdir build
   cd build
-  RAVEPATH=$RAVEPATH cmake ../ -DCMAKE_INSTALL_PREFIX=$SIMPATH_INSTALL -DBoost_DIR=$SIMPATH_INSTALL/lib/boost -DBoost_INCLUDE_DIR=$SIMPATH_INSTALL/include
+  RAVEPATH=$RAVEPATH BOOST_ROOT=$SIMPATH_INSTALL cmake ../ -DCMAKE_INSTALL_PREFIX=$SIMPATH_INSTALL -DBoost_NO_SYSTEM_PATHS=TRUE -DBoost_NO_BOOST_CMAKE=TRUE
 
   $MAKE_command -j$number_of_processes
   $MAKE_command -j$number_of_processes install
