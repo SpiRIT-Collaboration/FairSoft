@@ -44,6 +44,7 @@ then
   rm -rf ./src/boost
 
   ./configure --prefix=$install_prefix \
+              --disable-java \
               --with-clhep=$install_prefix \
               --with-boost=$install_prefix \
               --with-boost-libdir=$install_prefix/lib
