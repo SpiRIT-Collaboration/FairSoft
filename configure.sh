@@ -357,11 +357,18 @@ then
   source scripts/install_rave.sh
 fi
 
-##################### RAVE ####################################################
+##################### GENFIT2 ####################################################
 
 if [ "$check" = "1" ];
 then
   source scripts/install_genfit2.sh
+fi
+
+##################### ANAROOT ####################################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_anaroot.sh
 fi
 
 if [ "$check" = "1" ];
