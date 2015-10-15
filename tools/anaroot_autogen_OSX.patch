@@ -1,0 +1,11 @@
+--- autogen.sh
++++ autogen.sh
+@@ -20,7 +20,7 @@
+ #libtoolize --force; automake -a --add-missing; autoconf)
+ 
+ (cd $srcdir; aclocal;\
+-libtoolize --force; automake -a --add-missing; autoconf)
++glibtoolize --force; automake -a --add-missing; autoconf)
+ 
+ $srcdir/configure --enable-maintainer-mode "$@"
+ 

@@ -26,12 +26,7 @@ then
 
   if [ "$platform" = "macosx" ];
   then
-    if !hash autoconf 2> /dev/null;
-    then
-      source $SIMPATH/install_autoconf.sh
-      source $SIMPATH/install_automake.sh
-      source $SIMPATH/install_libtool.sh
-    fi
+    mypatch ../anaroot_autogen_OSX.patch
   fi
 
   ROOTSYS=$install_prefix ./autogen.sh --prefix=$install_prefix
