@@ -25,7 +25,7 @@ export HEPMCVERSION=2.06.09
 export PYTHIA8_LOCATION="http://home.thep.lu.se/~torbjorn/pythia8/"
 export PYTHIA8VERSION=pythia8183
 
-export XERCESC_LOCATION="http://mirror.serversupportforum.de/apache/xerces/c/3/sources/"
+export XERCESC_LOCATION="https://archive.apache.org/dist/xerces/c/3/sources/"
 export XERCESCVERSION=3.1.2
 
 export MESA_LOCATION="ftp://ftp.freedesktop.org/pub/mesa/older-versions/7.x/7.10.3/"
@@ -37,8 +37,8 @@ export GEANT4VERSIONp=Geant4-10.1.0
 
 export ROOT_LOCATION="http://root.cern.ch/git/root.git"
 if [ "$build_root6" = "yes" ]; then
-  # Root v6.04.00
-  export ROOTVERSION=v6-04-00
+  # Root v6.06.02
+  export ROOTVERSION=v6-06-02
 else
   # Root v5.34.32
   export ROOTVERSION=v5-34-32
