@@ -6,7 +6,7 @@ if [ ! -d  $SIMPATH/transport/geant4_vmc ]; then
   git clone $GEANT4VMC_LOCATION
 
   cd $SIMPATH/transport/geant4_vmc
-  git checkout -b $GEANT4VMCBRANCH $GEANT4VMCBRANCH
+  git checkout -b $GEANT4VMCBRANCH tags/$GEANT4VMCBRANCH
 fi
 
 install_prefix=$SIMPATH_INSTALL
@@ -63,7 +63,7 @@ then
 
   cd $SIMPATH_INSTALL
   mkdir -p share/geant4_vmc
-  ln -s $SIMPATH_INSTALL/share/Geant4VMC-3.3.0/examples/macro $SIMPATH_INSTALL/share/geant4_vmc/macro
+  ln -s $SIMPATH_INSTALL/share/Geant4VMC-$GEANT4VMCDIR/examples/macro $SIMPATH_INSTALL/share/geant4_vmc/macro
 fi
 
 if [ "$platform" = "macosx" ];

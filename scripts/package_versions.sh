@@ -32,14 +32,14 @@ export MESA_LOCATION="ftp://ftp.freedesktop.org/pub/mesa/older-versions/7.x/7.10
 export MESAVERSION=MesaLib-7.10.3
 
 export GEANT4_LOCATION="http://geant4.cern.ch/support/source/"
-export GEANT4VERSION=geant4.10.02.p01
-export GEANT4VERSIONp=Geant4-10.2.1
+export GEANT4VERSION=geant4.10.04
+export GEANT4VERSIONp=Geant4-10.4.0
 
 #export ROOT_LOCATION="http://root.cern.ch/git/root.git"
 export ROOT_LOCATION="https://github.com/root-project/root"
 #if [ "$build_root6" = "yes" ]; then
-  # Root v6.10.00 (commit b630f34)
-export ROOTVERSION=v6-10-08
+  # Root v6.12.06 (commit 3b87b846)
+export ROOTVERSION=v6-12-06
   #export ROOTHASHVALUE=b630f342fdab71b7297d7bdb73ecfbefd71c884a
 #else
   # Root v5.34.36
@@ -55,11 +55,12 @@ export GEANT3_LOCATION="http://root.cern.ch/git/geant3.git"
 export GEANT3BRANCH=v2-1
 
 export VGM_LOCATION="http://svn.code.sf.net/p/vgm/code/tags/"
-export VGMVERSION=v4-3
-export VGMDIR=VGM-4.3.0
+export VGMVERSION=v4-4
+export VGMDIR=VGM-4.4.0
 
-export GEANT4VMC_LOCATION="http://root.cern.ch/git/geant4_vmc.git"
-export GEANT4VMCBRANCH=v3-3
+export GEANT4VMC_LOCATION="https://github.com/vmc-project/geant4_vmc.git"
+export GEANT4VMCBRANCH=v3-6
+export GEANT4VMCDIR=3.6.0
 
 export MILLEPEDE_LOCATION="http://svnsrv.desy.de/public/MillepedeII/tags/"
 export MILLEPEDE_VERSION=V04-03-04
@@ -84,14 +85,14 @@ export NANOMSG_LOCATION="https://github.com/nanomsg/nanomsg/archive/"
 #export NANOMSG_LOCATION="http://download.nanomsg.org/"
 export NANOMSG_VERSION=1.0.0
 
-export G4ABLA_VERSION=G4ABLA3.0
-export G4ABLA_TAR=G4ABLA3.0.tar.gz
+export G4ABLA_VERSION=G4ABLA3.1
+export G4ABLA_TAR=G4ABLA3.1.tar.gz
 
-export G4EMLOW_VERSION=G4EMLOW6.48
-export G4EMLOW_TAR=G4EMLOW.6.48.tar.gz
+export G4EMLOW_VERSION=G4EMLOW7.3
+export G4EMLOW_TAR=G4EMLOW.7.3.tar.gz
 
-export G4ENSDFSTATE_VERSION=G4ENSDFSTATE1.2.1
-export G4ENSDFSTATE_TAR=G4ENSDFSTATE.1.2.1.tar.gz
+export G4ENSDFSTATE_VERSION=G4ENSDFSTATE2.2
+export G4ENSDFSTATE_TAR=G4ENSDFSTATE.2.2.tar.gz
 
 export G4NDL_VERSION=G4NDL4.5
 export G4NDL_TAR=G4NDL.4.5.tar.gz
@@ -105,14 +106,14 @@ export G4PII_TAR=G4PII.1.3.tar.gz
 export G4SAIDDATA_VERSION=G4SAIDDATA1.1
 export G4SAIDDATA_TAR=G4SAIDDATA.1.1.tar.gz
 
-export PhotonEvaporation_VERSION=PhotonEvaporation3.2
-export PhotonEvaporation_TAR=G4PhotonEvaporation.3.2.tar.gz
+export PhotonEvaporation_VERSION=PhotonEvaporation5.2
+export PhotonEvaporation_TAR=G4PhotonEvaporation.5.2.tar.gz
 
-export RadioactiveDecay_VERSION=RadioactiveDecay4.3.1
-export RadioactiveDecay_TAR=G4RadioactiveDecay.4.3.1.tar.gz
+export RadioactiveDecay_VERSION=RadioactiveDecay5.2
+export RadioactiveDecay_TAR=G4RadioactiveDecay.5.2.tar.gz
 
-export RealSurface_VERSION=RealSurface1.0
-export RealSurface_TAR=RealSurface.1.0.tar.gz
+export RealSurface_VERSION=RealSurface2.1
+export RealSurface_TAR=RealSurface.2.1.tar.gz
 
 export FAIRROOT_LOCATION="https://github.com/FairRootGroup/FairRoot.git"
 export FAIRROOTVERSION=dev

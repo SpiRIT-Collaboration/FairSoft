@@ -47,7 +47,7 @@ if [ "$platform" = "macosx" ]; then
     cd $SIMPATH/tools/root
     _build_xrootd=no
   else
-    _build_xrootd=yes
+    _build_xrootd=no
   fi
   # fix problem when linking with gcc6
   # libgfortran isn't found without the change
@@ -58,7 +58,7 @@ if [ "$platform" = "macosx" ]; then
     mysed 'minicern' 'minicern gfortran' $SIMPATH/tools/root/main/CMakeLists.txt
   fi
 else
-  _build_xrootd=yes
+  _build_xrootd=no
 fi
 set +xv
 

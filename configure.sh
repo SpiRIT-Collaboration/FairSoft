@@ -17,6 +17,7 @@ set +xv
 unset ROOTSYS
 
 #Clean the enviroment
+unset CLHEPPATH
 unset ROOTBUILD
 unset THREAD
 unset ZLIB
@@ -175,6 +176,9 @@ source scripts/package_versions.sh
 # Create the installation directory and its substructure
 create_installation_directories
 
+# set the versions of SpiRIT packages to be build
+source scripts/spirit_packages.sh
+
 # Now start compilations with checks
 
 ######################## CMake ################################
@@ -251,6 +255,13 @@ fi
 if [ "$check" = "1" -a "$compiler" = "Clang" -a "$platform" = "linux" ];
 then
   source scripts/install_mesa.sh
+fi
+
+##################### CLHEP #############################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_clhep.sh
 fi
 
 ##################### GEANT 4 #############################################
@@ -354,11 +365,38 @@ then
   source scripts/install_msgpack.sh
 fi
 
-##################### nanomsg ##################################################
+##################### RAVE ####################################################
 
 if [ "$check" = "1" ];
 then
+  source scripts/install_rave.sh
+fi
+
+##################### EIGEN3 ####################################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_eigen3.sh
+fi
+
+##################### GenFit ####################################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_genfit.sh
+fi
+
+##################### nanomsg ##################################################
+if [ "$check" = "1" ];
+then
   source scripts/install_nanomsg.sh
+fi
+
+##################### ANAROOT ####################################################
+
+if [ "$check" = "1" ];
+then
+  source scripts/install_anaroot.sh
 fi
 
 if [ "$check" = "1" ];

@@ -16,7 +16,7 @@
 
    ########### Xrootd has problems with gcc4.3.0 and 4.3.1 
    ########### Roofit has problems with gcc3.3.5  
-   XROOTD="-Dxrootd=ON"
+   XROOTD="-Dxrootd=OFF"
    export XRDSYS=$SIMPATH_INSTALL
    ROOFIT="-Droofit=ON"
    if [ "$compiler" = "gcc" ]; then
