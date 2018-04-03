@@ -11,7 +11,7 @@ export GENFIT2_LOCATION="https://github.com/SpiRIT-Collaboration/GenFit.git"
 export GENFIT2_VERSION=spirit.mar18
 
 export ANAROOT_LOCATION="https://github.com/SpiRIT-Collaboration/anaroot.git"
-export ANAROOT_VERSION=2016SAMURAI.s015
+export ANAROOT_VERSION=2016SAMURAI.s015.v2
 
 export AUTOCONF_LOCATION="http://ftpmirror.gnu.org/autoconf"
 export AUTOCONF_VERSION=autoconf-2.69

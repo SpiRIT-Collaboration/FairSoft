@@ -32,14 +32,14 @@ export MESA_LOCATION="ftp://ftp.freedesktop.org/pub/mesa/older-versions/7.x/7.10
 export MESAVERSION=MesaLib-7.10.3
 
 export GEANT4_LOCATION="http://geant4.cern.ch/support/source/"
-export GEANT4VERSION=geant4.10.04
-export GEANT4VERSIONp=Geant4-10.4.0
+export GEANT4VERSION=geant4.10.04.p01
+export GEANT4VERSIONp=Geant4-10.4.1
 
 #export ROOT_LOCATION="http://root.cern.ch/git/root.git"
 export ROOT_LOCATION="https://github.com/root-project/root"
 #if [ "$build_root6" = "yes" ]; then
   # Root v6.12.06 (commit 3b87b846)
-export ROOTVERSION=v6-12-06
+export ROOTVERSION=v6-13-02
   #export ROOTHASHVALUE=b630f342fdab71b7297d7bdb73ecfbefd71c884a
 #else
   # Root v5.34.36
@@ -54,7 +54,7 @@ export PLUTOVERSION=pluto_v5.37
 export GEANT3_LOCATION="http://root.cern.ch/git/geant3.git"
 export GEANT3BRANCH=v2-1
 
-export VGM_LOCATION="http://svn.code.sf.net/p/vgm/code/tags/"
+export VGM_LOCATION="http://github.com/vmc-project/vgm.git"
 export VGMVERSION=v4-4
 export VGMDIR=VGM-4.4.0
 

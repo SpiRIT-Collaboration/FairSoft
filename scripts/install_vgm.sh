@@ -16,7 +16,7 @@ then
   if [ ! -d vgm ];
   then
     echo "*** Downloading vgm sources with subversion***"
-    svn co $VGM_LOCATION/$VGMVERSION vgm
+    git clone -b $VGMVERSION $VGM_LOCATION vgm
   fi
 fi
 
